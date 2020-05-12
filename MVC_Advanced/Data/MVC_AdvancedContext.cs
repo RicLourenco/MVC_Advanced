@@ -20,5 +20,9 @@ namespace MVC_Advanced.Data
         }
 
         public System.Data.Entity.DbSet<MVC_Advanced.Models.Product> Products { get; set; }
+
+        public System.Data.Entity.DbSet<MVC_Advanced.Models.DocumentType> DocumentTypes { get; set; }
+
+        public System.Data.Entity.DbSet<MVC_Advanced.Models.Employee> Employees { get; set; }
     }
 }
