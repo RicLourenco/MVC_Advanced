@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 
@@ -17,6 +18,13 @@ namespace MVC_Advanced.Data
     
         public MVC_AdvancedContext() : base("name=MVC_AdvancedContext")
         {
+
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //By default MVC has cascade delete enabled, which allows me to delete a field related to any other field, and that in turn will also delete all other field related to the one deleted; This code removes this convention to not allow me to delete fields that are linked to other fields
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
 
         public System.Data.Entity.DbSet<MVC_Advanced.Models.Product> Products { get; set; }
